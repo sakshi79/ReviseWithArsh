@@ -1,0 +1,22 @@
+//Question link: https://leetcode.com/problems/all-elements-in-two-binary-search-trees/
+
+class Solution {
+    vector <int> res;
+    void inorder(TreeNode *root)
+    {
+        if(!root)
+            return;
+        if(root->left)
+            inorder(root->left);
+        if(root->right)
+            inorder(root->right);
+        res.push_back(root->val);
+    }
+public:
+    vector<int> getAllElements(TreeNode* root1, TreeNode* root2) {
+        inorder(root1);
+        inorder(root2);
+        sort(res.begin(), res.end());
+        return res;
+    }
+};
